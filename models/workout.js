@@ -10,36 +10,22 @@ const workoutSchema = new Schema({
   exercises: {
     type: {
       type: String,
-      enum: [ "name", "year", "major", "address" ],
+      enum: [ "resistance", "cardio"],
     },
     name: {
       type: String,
       trim: true,
       required: "Name is required."
     },
-    duration: Number,
-    weight: {
+    duration: {
       type: Number,
       required: true
     },
-    reps: {
-      type: Number,
-      default: 1
-    },
-    sets: Number
+    weight: Number,
+    reps: Number,
+    sets: Number,
+    distance: Number
   }
 });
 
 module.exports = mongoose.model("Workout", workoutSchema);
-
-module.exports = Transaction;
-
-// Note: Make sure to add conditionals or defaults to all non-required
-// keys
-
-// type: "resistance",
-// name: "Lateral Pull",
-// duration: 20,
-// weight: 300,
-// reps: 10,
-// sets: 4
