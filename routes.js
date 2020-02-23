@@ -1,18 +1,19 @@
 const mongoose = require("mongoose");
 const router = require("express").Router();
-const Workout = mongoose.model('Workout');
-const db = require("./models/workout.js");
+const Workout = require("./models/workout.js");
+const path = require('path');
 
-router.get("/hello", (req, res) => {
-  res.send("hello");
-})
+router.get("/exercise", (req, res) => {
+  res.sendFile(path.join(__dirname, './public/exercise.html'));
+});
 
-router.get("/exercises", (req, res) => {
-res.send("exercises");
-})
+router.get("/stats", (req, res) => {
+  res.sendFile(path.join(__dirname, './public/stats.html'));
+});
 
 router.get("/api/workouts", (req, res) => {
-  db.collection.find({})
+  Workout.find({})
+    .sort({ date: -1 })
     .then(data => {
       res.json(data);
     })
@@ -20,5 +21,17 @@ router.get("/api/workouts", (req, res) => {
       res.status(400).json(err);
     });
 });
+
+router.post("api/workouts", (req, res) => {
+  // Workout.create(req.body)
+  console.log(req.body);
+  // .then(data => res.json(data));
+});
+
+// router.get("/api/workouts/range", (req, res) => {
+
+// });
+
+
 
 module.exports = router;
