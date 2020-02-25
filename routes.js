@@ -1,7 +1,9 @@
-const mongoose = require("mongoose");
+const app = require("./server");
 const router = require("express").Router();
-const Workout = require("./models/workout.js");
+const mongoose = require("mongoose");
+const Workout = require('./models/workout');
 const path = require('path');
+
 
 router.get("/exercise", (req, res) => {
   res.sendFile(path.join(__dirname, './public/exercise.html'));
@@ -22,10 +24,11 @@ router.get("/api/workouts", (req, res) => {
     });
 });
 
-router.post("api/workouts", (req, res) => {
-  // Workout.create(req.body)
-  console.log(req.body);
-  // .then(data => res.json(data));
+router.post("/api/workouts", (req, res) => {
+  // console.log(req.body);
+  Workout.create(req.body)
+  .then(data => res.json(data))
+  .catch(err => console.log(err));
 });
 
 // router.get("/api/workouts/range", (req, res) => {

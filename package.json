@@ -1,18 +1,24 @@
 {
-  "name": "mongoose_skeleton",
+  "name": "17-Workout-Tracker",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
+    "prod": "node ./start.js",
+    "watch": "nodemon ./start.js",
+    "start": "npm run watch --scripts-prepend-node-path",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "watch": "nodemon server.js",
-    "seed": "node seeders/seed.js"
+    "seed": "node ./seeders/seed.js",
+    "blowitallaway": "node ./seeders/seed.js --delete"
   },
-  "author": "",
+  "author": "Alex Stevens",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "es6-promisify": "^6.0.2",
     "express": "^4.16.3",
+    "mongodb": "^3.5.3",
     "mongoose": "^5.9.2",
     "morgan": "^1.9.1"
   }
