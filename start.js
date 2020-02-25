@@ -15,6 +15,6 @@ require('./models/workout');
 const app = require('./server');
 app.set('port', process.env.PORT || 3030);
 
-const server = app.listen(app.get('port'), () =>{
+const server = app.listen(app.get('port'), () => {
   console.log(`App running on port ${server.address().port}!`);
 });
