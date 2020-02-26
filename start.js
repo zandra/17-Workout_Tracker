@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
-const mongodb = "mongodb+srv://zandster:fuckthatsdelish@five-by-five-c4dif.mongodb.net/test?retryWrites=true&w=majority"
-require('dotenv').config({ path: 'variables.env' });
+require('dotenv').config();
 
-mongoose.connect(mongodb, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.DATABASE, {useNewUrlParser: true, useUnifiedTopology: true});
 
 mongoose.connection.on('error', (err) => {
   console.log(`☠️ girl please -> ${err.message}`);
