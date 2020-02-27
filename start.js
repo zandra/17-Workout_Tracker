@@ -1,11 +1,16 @@
 const mongoose = require("mongoose");
 require('dotenv').config();
 
-mongoose.connect(process.env.DATABASE, {useNewUrlParser: true, useUnifiedTopology: true});
+const url = process.env.DATABASE;
+console.log(url);
 
-mongoose.connection.on('error', (err) => {
-  console.log(`☠️ girl please -> ${err.message}`);
-});
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(result => {
+    console.log('connected to MongoDB')
+  })
+  .catch((error) => {
+    console.log('error connecting to MongoDB:', error.message)
+  });
 
 // models
 require('./models/workout');
