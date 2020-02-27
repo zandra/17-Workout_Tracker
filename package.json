@@ -6,7 +6,7 @@
   "scripts": {
     "prod": "node ./start.js",
     "watch": "nodemon ./start.js",
-    "start": "npm run watch --scripts-prepend-node-path",
+    "start": "node ./start.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node ./seeders/seed.js",
     "blowitallaway": "node ./seeders/seed.js --delete"
